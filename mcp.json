@@ -1,0 +1,91 @@
+{
+  "name": "TanukiMCP Vision (Primitives)",
+  "version": "1.0.0",
+  "description": "Provides primitive tools for screen capture and UI interaction, enabling an LLM to see and control a computer's GUI.",
+  "icon": "🦾",
+  "author": "TanukiMCP Team",
+  "homepage": "https://github.com/tanukimcp/vision",
+  "license": "MIT",
+  "transport": {
+    "type": "http",
+    "host": "127.0.0.1",
+    "port": 8000,
+    "path": "/mcp"
+  },
+  "capabilities": {
+    "tools": [
+      {
+        "name": "capture_screen",
+        "description": "Captures a screenshot of a monitor and returns it as a base64 encoded string. The LLM agent analyzes this image.",
+        "parameters": {
+          "monitor": {
+            "type": "integer",
+            "description": "The monitor number to capture (1-based index).",
+            "default": 1
+          }
+        }
+      },
+      {
+        "name": "click_coordinate",
+        "description": "Performs a mouse click at specific (x, y) coordinates.",
+        "parameters": {
+          "x": { "type": "integer", "description": "The x-coordinate for the click." },
+          "y": { "type": "integer", "description": "The y-coordinate for the click." },
+          "button": { "type": "string", "description": "Mouse button ('left', 'right', 'middle').", "default": "left" },
+          "clicks": { "type": "integer", "description": "Number of clicks.", "default": 1 }
+        }
+      },
+      {
+        "name": "type_text",
+        "description": "Types the provided text at the current cursor location.",
+        "parameters": {
+          "text": { "type": "string", "description": "The string of text to type." }
+        }
+      },
+      {
+        "name": "press_keys",
+        "description": "Presses a sequence of keys or a hotkey combination.",
+        "parameters": {
+          "keys": { "type": "array", "items": { "type": "string" }, "description": "A list of keys to press (e.g., ['ctrl', 'c'])." }
+        }
+      },
+      {
+        "name": "scroll",
+        "description": "Scrolls the mouse wheel.",
+        "parameters": {
+          "clicks": { "type": "integer", "description": "The number of 'clicks' to scroll." },
+          "direction": { "type": "string", "description": "Direction to scroll ('up' or 'down').", "default": "down" }
+        }
+      },
+      {
+        "name": "move_mouse",
+        "description": "Moves the mouse cursor to a specified coordinate.",
+        "parameters": {
+          "x": { "type": "integer", "description": "The target x-coordinate." },
+          "y": { "type": "integer", "description": "The target y-coordinate." },
+          "duration": { "type": "number", "description": "Time in seconds for the move.", "default": 0.2 }
+        }
+      },
+      {
+        "name": "drag",
+        "description": "Performs a mouse drag from a start to an end coordinate.",
+        "parameters": {
+          "start_x": { "type": "integer", "description": "The starting x-coordinate." },
+          "start_y": { "type": "integer", "description": "The starting y-coordinate." },
+          "end_x": { "type": "integer", "description": "The ending x-coordinate." },
+          "end_y": { "type": "integer", "description": "The ending y-coordinate." },
+          "duration": { "type": "number", "description": "Time in seconds for the drag.", "default": 0.5 }
+        }
+      },
+      {
+        "name": "get_screen_info",
+        "description": "Retrieves information about the screen(s), such as resolution and layout."
+      }
+    ]
+  },
+  "installation": {
+    "requirements": "Python 3.11+, pip install -r requirements.txt",
+    "commands": ["python server.py"]
+  },
+  "tags": ["computer-vision", "automation", "ui-testing", "screen-capture", "gui-automation", "desktop-automation", "primitives"]
+} 

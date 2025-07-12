@@ -1,0 +1,21 @@
+{
+  "name": "tanukimcp-vision",
+  "version": "1.0.0",
+  "description": "Computer vision-based task execution MCP server",
+  "main": "server.py",
+  "module": "./server.py",
+  "type": "module",
+  "scripts": {
+    "start": "python server.py",
+    "dev": "python server.py --dev"
+  },
+  "keywords": ["mcp", "computer-vision", "automation", "ai"],
+  "author": "TanukiMCP",
+  "license": "MIT",
+  "dependencies": {
+    "python": "^3.11"
+  },
+  "engines": {
+    "python": ">=3.11"
+  }
+} 

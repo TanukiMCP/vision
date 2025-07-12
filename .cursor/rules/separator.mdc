@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+My machine is windows, when using terminal commands the correct separator for windows powershell is ';'. It is NOT '&'.
